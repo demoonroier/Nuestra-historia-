@@ -3,42 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Monserrat ❤️ Rogelio</title>
+
+<title>Rogelio & Monse ❤️</title>
 
 <style>
-body{
-    margin:0;
-    background:#111;
-    color:white;
-    font-family:Arial,sans-serif;
-    text-align:center;
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ffd6e7, #fff0f5);
+    color: #5a2340;
+    text-align: center;
+    overflow-x: hidden;
 }
 
-header{
-    padding:50px 20px;
+.container {
+    padding: 50px 20px;
 }
 
-h1{
-    color:#ff4d88;
-    font-size:40px;
+h1 {
+    font-size: 45px;
+    color: #d63384;
 }
 
-p{
-    font-size:20px;
+h2 {
+    font-weight: normal;
 }
 
-img{
-    width:300px;
-    max-width:90%;
-    border-radius:20px;
-    margin-top:20px;
-    box-shadow:0 0 20px #ff4d88;
+.card {
+    background: rgba(255,255,255,0.8);
+    padding: 30px;
+    border-radius: 25px;
+    max-width: 600px;
+    margin: 30px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-footer{
-    margin-top:60px;
-    padding:20px;
-    color:#aaa;
+.heart {
+    position: fixed;
+    bottom: -20px;
+    animation: subir 8s linear infinite;
+    color: #ff4d88;
+    font-size: 25px;
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+#contador {
+    font-size: 22px;
+    color: #c2185b;
 }
 </style>
 
@@ -46,21 +67,89 @@ footer{
 
 <body>
 
-<header>
-<h1>Monserrat ❤️ Rogelio</h1>
+<div class="container">
 
-<p>Bienvenidos a nuestro pequeño lugar.</p>
+<h1>Rogelio & Monse ❤️</h1>
 
-<p>Aquí guardaré nuestros mejores recuerdos juntos. 💖</p>
+<div class="card">
 
-<img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=900" alt="amor">
+<h2>Nuestra historia 💕</h2>
 
-</header>
+<p>
+Desde aquel 9 de octubre de 2024 comenzó una historia especial.
+Cada momento, cada risa y cada recuerdo forman parte de nosotros.
+</p>
 
-<footer>
-Hecho con mucho amor. ❤️
-</footer>
+<h2>Tiempo juntos ⏳</h2>
+
+<p id="contador"></p>
+
+</div>
+
+</div>
+
+
+<script>
+
+const inicio = new Date("2024-10-09T00:00:00");
+
+function actualizar(){
+
+const ahora = new Date();
+
+const diferencia = ahora - inicio;
+
+const dias = Math.floor(diferencia / (1000*60*60*24));
+
+const horas = Math.floor((diferencia / (1000*60*60)) % 24);
+
+const minutos = Math.floor((diferencia / (1000*60)) % 60);
+
+const segundos = Math.floor((diferencia / 1000) % 60);
+
+
+document.getElementById("contador").innerHTML =
+dias + " días, " +
+horas + " horas, " +
+minutos + " minutos y " +
+segundos + " segundos ❤️";
+
+}
+
+setInterval(actualizar,1000);
+
+actualizar();
+
+
+// corazones
+
+function crearCorazon(){
+
+const corazon = document.createElement("div");
+
+corazon.className="heart";
+
+corazon.innerHTML="❤️";
+
+corazon.style.left=Math.random()*100+"vw";
+
+corazon.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(corazon);
+
+
+setTimeout(()=>{
+
+corazon.remove();
+
+},10000);
+
+}
+
+setInterval(crearCorazon,500);
+
+</script>
+
 
 </body>
 </html>
-Primera versión de la página 
